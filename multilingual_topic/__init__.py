@@ -10,7 +10,7 @@ Arabic, English, Urdu, Farsi, Turkish, Hindi and Indonesian corpora.
 
 from .topic_modeling import SentenceRepresentation, TopicModel, ParameterTuner
 from .translation import ManyToManyTranslator, HelsinkiTranslator, translate_iterator
-from .classification import (
+from .setfit import (
     train_setfit,
     cross_validate_setfit,
     Evaluation,
