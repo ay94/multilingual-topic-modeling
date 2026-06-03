@@ -1,12 +1,45 @@
 import numpy as np
 import pandas as pd
 from umap import UMAP
-from typing import List
+from typing import List, Optional
 import plotly.express as px
 from datasets import Dataset
-from setfit import sample_dataset
+from setfit import SetFitModel, SetFitTrainer, sample_dataset
 from abc import ABC, abstractmethod
 from sklearn.model_selection import train_test_split
+
+
+def train_setfit(
+    train_dataset: Dataset,
+    model_name: str = "sentence-transformers/all-mpnet-base-v2",
+    num_epochs: int = 1,
+    batch_size: int = 16,
+) -> SetFitModel:
+    """
+    Fine-tune a SetFit model for few-shot cluster refinement.
+
+    Used between BERTopic layers to steer the embedding space toward
+    analytically useful cluster boundaries using positive/negative examples.
+
+    Args:
+        train_dataset: Dataset with 'text' and 'label' columns (relevant/irrelevant).
+        model_name: Sentence transformer backbone. Tested with all-mpnet-base-v2,
+                    nomic-embed-text, and UAE-Large-V1.
+        num_epochs: Training epochs (1 is typically sufficient for few-shot).
+        batch_size: Contrastive training batch size.
+
+    Returns:
+        Fine-tuned SetFitModel ready for cluster annotation.
+    """
+    model = SetFitModel.from_pretrained(model_name)
+    trainer = SetFitTrainer(
+        model=model,
+        train_dataset=train_dataset,
+        num_epochs=num_epochs,
+        batch_size=batch_size,
+    )
+    trainer.train()
+    return model
 
 
 class ClassifierBaseHelper(ABC):
