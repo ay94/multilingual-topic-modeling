@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "multilingual-topic-toolkit"
+version = "0.1.0"
+description = "Multilingual topic modelling, machine translation, SetFit-guided classification and text preprocessing."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+
+dependencies = [
+    "bertopic>=0.15",
+    "umap-learn>=0.5",
+    "hdbscan>=0.8",
+    "setfit>=1.0",
+    "sentence-transformers>=2.2",
+    "transformers>=4.30",
+    "torch>=2.0",
+    "datasets>=2.0",
+    "pandas>=1.5",
+    "numpy>=1.23",
+    "plotly>=5.0",
+    "tqdm",
+    "emoji",
+    "scikit-learn>=1.2",
+]
+
+[project.optional-dependencies]
+arabic = ["arabert"]
+dev = ["pytest", "black", "ruff"]
