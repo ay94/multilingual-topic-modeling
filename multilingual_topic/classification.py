@@ -1,45 +1,178 @@
 import numpy as np
 import pandas as pd
 from umap import UMAP
-from typing import List, Optional
+from typing import List, Optional, Dict
 import plotly.express as px
 from datasets import Dataset
-from setfit import SetFitModel, SetFitTrainer, sample_dataset
+from setfit import SetFitModel, Trainer, TrainingArguments, sample_dataset
 from abc import ABC, abstractmethod
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import (
+    accuracy_score, precision_score, recall_score, f1_score,
+    confusion_matrix, classification_report,
+)
 
+
+# ── Training ──────────────────────────────────────────────────────────────────
 
 def train_setfit(
     train_dataset: Dataset,
+    eval_dataset: Optional[Dataset] = None,
     model_name: str = "sentence-transformers/all-mpnet-base-v2",
     num_epochs: int = 1,
     batch_size: int = 16,
+    seed: int = 1,
 ) -> SetFitModel:
     """
     Fine-tune a SetFit model for few-shot cluster refinement.
 
     Used between BERTopic layers to steer the embedding space toward
-    analytically useful cluster boundaries using positive/negative examples.
+    analytically useful cluster boundaries. Provide positive/negative
+    examples (relevant/irrelevant) drawn from cluster output.
+
+    Tested backbones:
+        - sentence-transformers/all-mpnet-base-v2
+        - nomic-ai/nomic-embed-text-v1
+        - WhereIsAI/UAE-Large-V1
+        - sentence-transformers/paraphrase-mpnet-base-v2
 
     Args:
-        train_dataset: Dataset with 'text' and 'label' columns (relevant/irrelevant).
-        model_name: Sentence transformer backbone. Tested with all-mpnet-base-v2,
-                    nomic-embed-text, and UAE-Large-V1.
+        train_dataset: HF Dataset with 'text' and 'label' columns.
+        eval_dataset: Optional validation dataset.
+        model_name: Sentence transformer backbone.
         num_epochs: Training epochs (1 is typically sufficient for few-shot).
         batch_size: Contrastive training batch size.
+        seed: Random seed for reproducibility.
 
     Returns:
-        Fine-tuned SetFitModel ready for cluster annotation.
+        Fine-tuned SetFitModel.
     """
-    model = SetFitModel.from_pretrained(model_name)
-    trainer = SetFitTrainer(
-        model=model,
-        train_dataset=train_dataset,
-        num_epochs=num_epochs,
+    args = TrainingArguments(
         batch_size=batch_size,
+        num_epochs=num_epochs,
+        evaluation_strategy="epoch" if eval_dataset else "no",
+        save_strategy="no",
+        seed=seed,
+    )
+    model = SetFitModel.from_pretrained(model_name)
+    trainer = Trainer(
+        model=model,
+        args=args,
+        train_dataset=train_dataset,
+        eval_dataset=eval_dataset,
+        metric="accuracy",
     )
     trainer.train()
     return model
+
+
+# ── Cross-validation ──────────────────────────────────────────────────────────
+
+def cross_validate_setfit(
+    df: pd.DataFrame,
+    text_col: str,
+    label_col: str,
+    model_name: str = "sentence-transformers/paraphrase-mpnet-base-v2",
+    n_folds: int = 10,
+    train_ratio: float = 0.7,
+    val_ratio: float = 0.1,
+    batch_size: int = 16,
+    num_epochs: int = 1,
+) -> Dict[str, List[float]]:
+    """
+    K-fold cross-validation for a SetFit binary classifier.
+
+    Each fold shuffles the data with a different seed, trains a fresh model,
+    and evaluates on a held-out test split.
+
+    Args:
+        df: DataFrame with text and label columns.
+        text_col: Column containing the text.
+        label_col: Column containing labels (e.g. 'relevant'/'irrelevant').
+        model_name: Sentence transformer backbone.
+        n_folds: Number of folds.
+        train_ratio: Fraction of data used for training.
+        val_ratio: Fraction used for validation (remainder = test).
+        batch_size: Training batch size.
+        num_epochs: Training epochs per fold.
+
+    Returns:
+        Dict with lists of accuracy, precision, recall and F1 across folds.
+    """
+    results: Dict[str, List[float]] = {
+        "accuracy": [], "precision": [], "recall": [], "f1": []
+    }
+
+    for i in range(n_folds):
+        shuffled = df.sample(frac=1, random_state=i).reset_index(drop=True)
+        n = len(shuffled)
+        train_end = round(train_ratio * n)
+        val_end = round((train_ratio + val_ratio) * n)
+
+        train_ds = Dataset.from_pandas(shuffled[:train_end][[text_col, label_col]].rename(columns={text_col: "text", label_col: "label"}))
+        val_ds   = Dataset.from_pandas(shuffled[train_end:val_end][[text_col, label_col]].rename(columns={text_col: "text", label_col: "label"}))
+        test_ds  = Dataset.from_pandas(shuffled[val_end:][[text_col, label_col]].rename(columns={text_col: "text", label_col: "label"}))
+
+        model = train_setfit(train_ds, val_ds, model_name=model_name, batch_size=batch_size, num_epochs=num_epochs, seed=i)
+
+        y_true = test_ds["label"]
+        y_pred = model(test_ds["text"])
+
+        results["accuracy"].append(accuracy_score(y_true, y_pred))
+        results["precision"].append(precision_score(y_true, y_pred, average="macro", zero_division=0))
+        results["recall"].append(recall_score(y_true, y_pred, average="macro", zero_division=0))
+        results["f1"].append(f1_score(y_true, y_pred, average="macro", zero_division=0))
+
+        print(f"Fold {i+1}/{n_folds} — F1: {results['f1'][-1]:.4f}")
+
+    for metric, scores in results.items():
+        print(f"{metric.capitalize():12s}: mean={np.mean(scores):.4f}  min={np.min(scores):.4f}  max={np.max(scores):.4f}")
+
+    return results
+
+
+# ── Evaluation ────────────────────────────────────────────────────────────────
+
+class Evaluation:
+    """
+    Evaluation helper for a trained SetFit classifier.
+
+    Usage::
+
+        ev = Evaluation(y_true, y_pred)
+        ev.report()
+        fig = ev.confusion_matrix()
+        fig.show()
+    """
+
+    def __init__(self, y_true: List, y_pred: List):
+        self.y_true = list(y_true)
+        self.y_pred = list(y_pred)
+
+    def report(self) -> None:
+        print(classification_report(self.y_true, self.y_pred))
+
+    def confusion_matrix(self, fig_size: tuple = (600, 600)) -> px.imshow:
+        labels = sorted(set(self.y_true))
+        cm = confusion_matrix(self.y_true, self.y_pred, labels=labels)
+        cm_df = pd.DataFrame(cm, index=labels, columns=labels)
+        fig = px.imshow(
+            cm_df,
+            color_continuous_scale="rdbu_r",
+            title="Confusion Matrix",
+        )
+        fig.update_xaxes(title="Predicted")
+        fig.update_yaxes(title="True")
+        fig.update_layout(width=fig_size[0], height=fig_size[1])
+        return fig
+
+    def metrics(self) -> Dict[str, float]:
+        return {
+            "accuracy":  accuracy_score(self.y_true, self.y_pred),
+            "precision": precision_score(self.y_true, self.y_pred, average="macro", zero_division=0),
+            "recall":    recall_score(self.y_true, self.y_pred, average="macro", zero_division=0),
+            "f1":        f1_score(self.y_true, self.y_pred, average="macro", zero_division=0),
+        }
 
 
 class ClassifierBaseHelper(ABC):

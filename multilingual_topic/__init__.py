@@ -12,6 +12,8 @@ from .topic_modeling import SentenceRepresentation, TopicModel, ParameterTuner
 from .translation import ManyToManyTranslator, HelsinkiTranslator, translate_iterator
 from .classification import (
     train_setfit,
+    cross_validate_setfit,
+    Evaluation,
     ClassifierValidationHelper,
     ClassifierAnnotationHelper,
     ClassifierTestingHelper,
