@@ -1,277 +1,573 @@
-<mxGraphModel dx="1422" dy="762" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
-  <root>
-    <mxCell id="0" />
-    <mxCell id="1" parent="0" />
+<mxfile>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ROW 1 — Data Collection (y=60)
-    ═══════════════════════════════════════════════════════ -->
-    <mxCell id="label_r1" value="Data Collection" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;fontSize=12;fontStyle=3;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="10" y="50" width="130" height="55" as="geometry" />
-    </mxCell>
+  <!-- ═══════════════════════════════════════════════════════════════
+       PAGE 1 — End-to-End Pipeline
+  ════════════════════════════════════════════════════════════════════ -->
+  <diagram name="End-to-End Pipeline">
+    <mxGraphModel background="#ffffff" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
 
-    <!-- Online Articles (pink pentagon / arrow) -->
-    <mxCell id="dc_articles" value="Online Articles" style="shape=mxgraph.arrows2.arrow;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=11;direction=east;dy=0.6;dx=30;notch=0;" vertex="1" parent="1">
-      <mxGeometry x="150" y="50" width="140" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 1 · Data Collection (y=40) ──────────────────────── -->
+        <mxCell id="r1-label" value="Data Collection" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="42" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-main" value="9 Countries · 7 Languages · Social &amp; Mainstream Media" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="180" y="40" width="550" height="55" as="geometry"/>
+        </mxCell>
 
-    <!-- Term Collection (pink pentagon / arrow) -->
-    <mxCell id="dc_terms" value="Term Collection" style="shape=mxgraph.arrows2.arrow;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=11;direction=east;dy=0.6;dx=30;notch=0;" vertex="1" parent="1">
-      <mxGeometry x="320" y="50" width="140" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row1 → row2 -->
+        <mxCell id="a1-2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r1-main" target="r2-msgs" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Social Media Posts (pink pentagon / arrow) -->
-    <mxCell id="dc_social" value="Social Media Posts" style="shape=mxgraph.arrows2.arrow;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=11;direction=east;dy=0.6;dx=30;notch=0;" vertex="1" parent="1">
-      <mxGeometry x="490" y="50" width="140" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 2 · Data Ingestion (y=170) ──────────────────────── -->
+        <mxCell id="r2-label" value="Data Ingestion" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="172" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-units" value="Coherent Units" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="180" y="170" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-msgs" value="Messages" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="390" y="162" width="120" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-collect" value="Collect Posts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="570" y="170" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="a2-um" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r2-units" target="r2-msgs" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a2-cm" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r2-collect" target="r2-msgs" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ROW 2 — Data Ingestion (y=190)
-    ═══════════════════════════════════════════════════════ -->
-    <mxCell id="label_r2" value="Data Ingestion" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;fontSize=12;fontStyle=3;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="10" y="180" width="130" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row2 → row3 -->
+        <mxCell id="a2-3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r2-msgs" target="r3-model" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Coherent Units -->
-    <mxCell id="di_units" value="Coherent Units" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="150" y="180" width="140" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 3 · Machine Translation (y=300) ─────────────────── -->
+        <mxCell id="r3-label" value="Machine Translation" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="302" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-model" value="mBART / Helsinki-NLP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="300" width="170" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-corpus" value="Translated Corpus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="410" y="300" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-note" value="BERTScore validation" style="text;html=1;align=left;fontStyle=2;fontSize=10;fontColor=#888888;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="578" y="315" width="160" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="a3-mc" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r3-model" target="r3-corpus" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Messages (cylinder) -->
-    <mxCell id="di_messages" value="Messages" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="340" y="175" width="120" height="65" as="geometry" />
-    </mxCell>
+        <!-- arrow row3 → row4 -->
+        <mxCell id="a3-4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r3-corpus" target="r4-umap" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Collect Posts -->
-    <mxCell id="di_posts" value="Collect Posts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="510" y="180" width="140" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 4 · Topic Modeling Layer 1 (y=430) ─────────────── -->
+        <mxCell id="r4-label" value="Topic Modeling — Layer 1" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="432" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-umap" value="UMAP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="180" y="430" width="130" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-hdb" value="HDBSCAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="360" y="430" width="130" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-broad" value="Broad Themes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="540" y="430" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="a4-uh" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r4-umap" target="r4-hdb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a4-hb" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r4-hdb" target="r4-broad" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Coherent Units → Messages -->
-    <mxCell id="e_units_msg" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="di_units" target="di_messages" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- arrow row4 broad → row5 setfit -->
+        <mxCell id="a4-5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r4-broad" target="r5-setfit" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Collect Posts → Messages -->
-    <mxCell id="e_posts_msg" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="di_posts" target="di_messages" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 5 · SetFit Refinement (y=560) ──────────────────── -->
+        <mxCell id="r5-label" value="SetFit Refinement" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="562" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-examples" value="Positive / Negative Examples" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="180" y="560" width="185" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-setfit" value="SetFit Classifier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="415" y="560" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-refined" value="Refined Clusters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="615" y="560" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="a5-es" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r5-examples" target="r5-setfit" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a5-sr" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r5-setfit" target="r5-refined" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Online Articles → Coherent Units -->
-    <mxCell id="e_art_units" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="dc_articles" target="di_units" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- arrow row5 → row6 -->
+        <mxCell id="a5-6" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r5-refined" target="r6-bertopic" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Social Media Posts → Collect Posts -->
-    <mxCell id="e_social_posts" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="dc_social" target="di_posts" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 6 · Topic Modeling Layer 2 (y=690) ─────────────── -->
+        <mxCell id="r6-label" value="Topic Modeling — Layer 2" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="692" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-bertopic" value="Per-Theme BERTopic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="690" width="170" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-sub" value="Sub-Themes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="400" y="690" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="a6-bs" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r6-bertopic" target="r6-sub" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ROW 3 — Machine Translation (y=320)
-    ═══════════════════════════════════════════════════════ -->
-    <mxCell id="label_r3" value="Machine Translation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;fontSize=12;fontStyle=3;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="10" y="310" width="130" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row6 → row7 -->
+        <mxCell id="a6-7" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r6-sub" target="r7-deep" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- mBART / Helsinki-NLP -->
-    <mxCell id="mt_model" value="mBART / Helsinki-NLP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="270" y="310" width="160" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 7 · Layer 3 LVU (y=820) ───────────────────────── -->
+        <mxCell id="r7-label" value="Layer 3 — LVU Deep Dive" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="822" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r7-deep" value="Deep BERTopic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="820" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r7-note" value="Dense cluster unpacking" style="text;html=1;align=left;fontStyle=2;fontSize=10;fontColor=#888888;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="345" y="835" width="185" height="25" as="geometry"/>
+        </mxCell>
 
-    <!-- Translated Corpus -->
-    <mxCell id="mt_corpus" value="Translated Corpus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="480" y="310" width="140" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row7 → row8 -->
+        <mxCell id="a7-8" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="r7-deep" target="r8-heat" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- BERTScore annotation -->
-    <mxCell id="mt_annot" value="BERTScore validation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
-      <mxGeometry x="635" y="320" width="150" height="35" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 8 · Analysis & Reporting (y=950) ───────────────── -->
+        <mxCell id="r8-label" value="Analysis &amp; Reporting" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="952" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r8-vol" value="Volume over Time" style="shape=mxgraph.flowchart.or;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="180" y="950" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r8-heat" value="Country × Theme Heatmaps" style="shape=mxgraph.flowchart.or;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="370" y="950" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r8-narr" value="Narrative Comparison" style="shape=mxgraph.flowchart.or;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="570" y="950" width="160" height="55" as="geometry"/>
+        </mxCell>
 
-    <!-- Messages → mBART -->
-    <mxCell id="e_msg_mt" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="di_messages" target="mt_model" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
 
-    <!-- mBART → Translated Corpus -->
-    <mxCell id="e_mt_corpus" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="mt_model" target="mt_corpus" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+  <!-- ═══════════════════════════════════════════════════════════════
+       PAGE 2 — Topic Modeling Workflow
+  ════════════════════════════════════════════════════════════════════ -->
+  <diagram name="Topic Modeling Workflow">
+    <mxGraphModel background="#ffffff" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ROW 4 — Layer 1 Topic Model (y=450)
-    ═══════════════════════════════════════════════════════ -->
-    <mxCell id="label_r4" value="Layer 1 Topic Model" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;fontSize=12;fontStyle=3;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="10" y="440" width="130" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 1 · Embedding (y=40) ───────────────────────────── -->
+        <mxCell id="p2r1-label" value="Embedding" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="42" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r1-model" value="Sentence Representation&#xa;&#xa;all-mpnet-base-v2 · nomic-embed-text · UAE-Large-V1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="180" y="35" width="480" height="65" as="geometry"/>
+        </mxCell>
 
-    <!-- UMAP Dimensionality Reduction -->
-    <mxCell id="l1_umap" value="UMAP Dimensionality Reduction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="150" y="440" width="160" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row1 → row2 -->
+        <mxCell id="p2a1-2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r1-model" target="p2r2-umap" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Density-Based Clustering -->
-    <mxCell id="l1_cluster" value="Density-Based Clustering" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="340" y="440" width="155" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 2 · Parameter Tuning (y=170) ───────────────────── -->
+        <mxCell id="p2r2-label" value="Parameter Tuning" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="177" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r2-umap" value="UMAP Tuning&#xa;n_neighbors · n_components · min_dist" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="180" y="170" width="195" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r2-hdb" value="HDBSCAN Tuning&#xa;min_cluster_size · epsilon" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="415" y="170" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r2-sil" value="Silhouette Score" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="635" y="170" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r2-note" value="ParameterTuner — save/load configs" style="text;html=1;align=left;fontStyle=2;fontSize=10;fontColor=#888888;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="180" y="237" width="240" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2a2-uh" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r2-umap" target="p2r2-hdb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2a2-hs" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r2-hdb" target="p2r2-sil" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Broad Themes — 3 small grey boxes -->
-    <mxCell id="l1_bt1" value="Theme A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="520" y="440" width="70" height="55" as="geometry" />
-    </mxCell>
-    <mxCell id="l1_bt2" value="Theme B" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="598" y="440" width="70" height="55" as="geometry" />
-    </mxCell>
-    <mxCell id="l1_bt3" value="Theme C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="676" y="440" width="70" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row2 → row3 -->
+        <mxCell id="p2a2-3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r2-sil" target="p2r3-bert" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Translated Corpus → UMAP -->
-    <mxCell id="e_corpus_umap" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="mt_corpus" target="l1_umap" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 3 · BERTopic Fit (y=315) ───────────────────────── -->
+        <mxCell id="p2r3-label" value="BERTopic Fit" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="322" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r3-bert" value="BERTopic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="320" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r3-raw" value="Raw Clusters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="390" y="320" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2a3-br" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r3-bert" target="p2r3-raw" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- UMAP → Clustering -->
-    <mxCell id="e_umap_clust" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="l1_umap" target="l1_cluster" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- arrow row3 → row4 -->
+        <mxCell id="p2a3-4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r3-raw" target="p2r4-vis" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Clustering → Broad Themes (to first box) -->
-    <mxCell id="e_clust_bt" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="l1_cluster" target="l1_bt1" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 4 · Cluster Inspection (y=450) ─────────────────── -->
+        <mxCell id="p2r4-label" value="Cluster Inspection" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="452" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r4-vis" value="Visualise Embeddings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="180" y="450" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r4-wc" value="Topic Word Clouds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="375" y="450" width="155" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r4-dist" value="Cluster Size Distribution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="565" y="450" width="165" height="55" as="geometry"/>
+        </mxCell>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ROW 5 — SetFit Refinement (y=580)
-    ═══════════════════════════════════════════════════════ -->
-    <mxCell id="label_r5" value="SetFit Refinement" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;fontSize=12;fontStyle=3;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="10" y="570" width="130" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row4 → row5 -->
+        <mxCell id="p2a4-5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r4-wc" target="p2r5-assign" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Positive / Negative Examples (two grey boxes side by side) -->
-    <mxCell id="sf_pos" value="Positive Examples" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="150" y="570" width="130" height="55" as="geometry" />
-    </mxCell>
-    <mxCell id="sf_neg" value="Negative Examples" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="290" y="570" width="130" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 5 · Thematic Allocation (y=580) ───────────────── -->
+        <mxCell id="p2r5-label" value="Thematic Allocation" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="582" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r5-assign" value="Assign Theme Labels" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="580" width="170" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r5-map" value="Theme–Cluster Mapping" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="400" y="580" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2a5-am" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r5-assign" target="p2r5-map" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- SetFit Few-Shot Classifier -->
-    <mxCell id="sf_model" value="SetFit Few-Shot Classifier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="440" y="570" width="155" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row5 → row6 -->
+        <mxCell id="p2a5-6" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p2r5-map" target="p2r6-out" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Refined Cluster Boundaries -->
-    <mxCell id="sf_refined" value="Refined Cluster Boundaries" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="620" y="570" width="150" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 6 · Output (y=710) ──────────────────────────────── -->
+        <mxCell id="p2r6-label" value="Output" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="712" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2r6-out" value="Labelled Corpus with Topic IDs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="710" width="300" height="55" as="geometry"/>
+        </mxCell>
 
-    <!-- Positive Examples → SetFit -->
-    <mxCell id="e_pos_sf" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="sf_pos" target="sf_model" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <mxCell id="e_neg_sf" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;" edge="1" source="sf_neg" target="sf_model" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
 
-    <!-- SetFit → Refined Cluster Boundaries -->
-    <mxCell id="e_sf_refined" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="sf_model" target="sf_refined" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+  <!-- ═══════════════════════════════════════════════════════════════
+       PAGE 3 — Machine Translation Workflow
+  ════════════════════════════════════════════════════════════════════ -->
+  <diagram name="Machine Translation Workflow">
+    <mxGraphModel background="#ffffff" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
 
-    <!-- Broad Themes (row 4) → SetFit (row 5) — from bt2 center down -->
-    <mxCell id="e_bt_sf" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="l1_bt2" target="sf_model" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 1 · Language Detection (y=40) ──────────────────── -->
+        <mxCell id="p3r1-label" value="Language Detection" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="42" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r1-detect" value="Detect Language" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="150" height="55" as="geometry"/>
+        </mxCell>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ROW 6 — Layer 2 Topic Model (y=710)
-    ═══════════════════════════════════════════════════════ -->
-    <mxCell id="label_r6" value="Layer 2 Topic Model" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;fontSize=12;fontStyle=3;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="10" y="700" width="130" height="55" as="geometry" />
-    </mxCell>
+        <!-- branch left: many-to-many -->
+        <mxCell id="p3r1-m2m" value="Many-to-Many" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="180" y="160" width="145" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r1-mbart" value="mBART-large-50" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="270" width="145" height="50" as="geometry"/>
+        </mxCell>
 
-    <!-- Per-Theme BERTopic -->
-    <mxCell id="l2_bertopic" value="Per-Theme BERTopic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="350" y="700" width="155" height="55" as="geometry" />
-    </mxCell>
+        <!-- branch right: language pair -->
+        <mxCell id="p3r1-pair" value="Language Pair" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="465" y="160" width="145" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r1-hels" value="Helsinki-NLP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="465" y="270" width="145" height="50" as="geometry"/>
+        </mxCell>
 
-    <!-- Sub-Themes (3 small grey boxes) -->
-    <mxCell id="l2_st1" value="Sub-Theme 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="535" y="700" width="90" height="55" as="geometry" />
-    </mxCell>
-    <mxCell id="l2_st2" value="Sub-Theme 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="635" y="700" width="90" height="55" as="geometry" />
-    </mxCell>
-    <mxCell id="l2_st3" value="Sub-Theme 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="735" y="700" width="90" height="55" as="geometry" />
-    </mxCell>
+        <!-- detect → m2m -->
+        <mxCell id="p3a1-dm" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r1-detect" target="p3r1-m2m" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- detect → pair -->
+        <mxCell id="p3a1-dp" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r1-detect" target="p3r1-pair" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- m2m → mbart -->
+        <mxCell id="p3a1-mm" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r1-m2m" target="p3r1-mbart" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- pair → helsinki -->
+        <mxCell id="p3a1-ph" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r1-pair" target="p3r1-hels" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Refined Cluster Boundaries → Per-Theme BERTopic -->
-    <mxCell id="e_refined_l2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="sf_refined" target="l2_bertopic" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- mbart → row2 -->
+        <mxCell id="p3a1-mb2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r1-mbart" target="p3r2-trans" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- helsinki → row2 -->
+        <mxCell id="p3a1-hb2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r1-hels" target="p3r2-trans" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Per-Theme BERTopic → Sub-Themes -->
-    <mxCell id="e_l2_st" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="l2_bertopic" target="l2_st1" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 2 · Batched Translation (y=385) ───────────────── -->
+        <mxCell id="p3r2-label" value="Batched Translation" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="382" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r2-trans" value="Translate Iterator&#xa;batch_size · src_lang · tgt_lang" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="250" y="378" width="230" height="60" as="geometry"/>
+        </mxCell>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ROW 7 — Layer 3 — LVU Deep Dive (y=840)
-    ═══════════════════════════════════════════════════════ -->
-    <mxCell id="label_r7" value="Layer 3 — LVU Deep Dive" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontStyle=3;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="10" y="830" width="130" height="55" as="geometry" />
-    </mxCell>
+        <!-- arrow row2 → row3 -->
+        <mxCell id="p3a2-3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r2-trans" target="p3r3-bert" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Deep BERTopic -->
-    <mxCell id="l3_bertopic" value="Deep BERTopic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="350" y="830" width="155" height="55" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 3 · Quality Validation (y=508) ─────────────────── -->
+        <mxCell id="p3r3-label" value="Quality Validation" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="510" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r3-bert" value="BERTScore" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="508" width="140" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r3-prf" value="Precision · Recall · F1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="370" y="508" width="165" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r3-human" value="Human Spot-Check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="580" y="508" width="155" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3a3-bp" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r3-bert" target="p3r3-prf" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Dense cluster unpacking annotation -->
-    <mxCell id="l3_annot" value="Dense cluster unpacking" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
-      <mxGeometry x="520" y="840" width="170" height="35" as="geometry" />
-    </mxCell>
+        <!-- arrow row3 → row4 -->
+        <mxCell id="p3a3-4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r3-prf" target="p3r4-thresh" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Sub-Themes (row 6) → Deep BERTopic -->
-    <mxCell id="e_l2_l3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="l2_bertopic" target="l3_bertopic" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 4 · Threshold Check (y=630) ───────────────────── -->
+        <mxCell id="p3r4-label" value="Threshold Check" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="635" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r4-thresh" value="Score ≥ threshold?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="300" y="623" width="170" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r4-yes" value="Translated Corpus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="540" y="635" width="155" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r4-no" value="Re-translate / Fallback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="120" y="635" width="155" height="55" as="geometry"/>
+        </mxCell>
 
-    <!-- ═══════════════════════════════════════════════════════
-         ROW 8 — Analysis & Reporting (y=970)
-    ═══════════════════════════════════════════════════════ -->
-    <mxCell id="label_r8" value="Analysis &amp; Reporting" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;fontSize=12;fontStyle=3;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="10" y="960" width="130" height="55" as="geometry" />
-    </mxCell>
+        <!-- thresh → yes -->
+        <mxCell id="p3a4-ty" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r4-thresh" target="p3r4-yes" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3a4-ty-lbl" value="Yes" style="text;html=1;fontSize=11;fontColor=#555555;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="492" y="638" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <!-- thresh → no -->
+        <mxCell id="p3a4-tn" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r4-thresh" target="p3r4-no" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3a4-tn-lbl" value="No" style="text;html=1;fontSize=11;fontColor=#555555;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="265" y="638" width="30" height="20" as="geometry"/>
+        </mxCell>
+        <!-- no → loops back to translate iterator (dashed) -->
+        <mxCell id="p3a4-loop" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="p3r4-no" target="p3r2-trans" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="662"/>
+              <mxPoint x="100" y="408"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
 
-    <!-- Volume over Time (yellow hexagon) -->
-    <mxCell id="ar_vol" value="Volume over Time" style="shape=mxgraph.flowchart.or;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="170" y="958" width="140" height="60" as="geometry" />
-    </mxCell>
+        <!-- yes → row5 -->
+        <mxCell id="p3a4-5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p3r4-yes" target="p3r5-out" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
-    <!-- Country × Theme Heatmaps (yellow hexagon) -->
-    <mxCell id="ar_heat" value="Country × Theme Heatmaps" style="shape=mxgraph.flowchart.or;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="350" y="958" width="155" height="60" as="geometry" />
-    </mxCell>
+        <!-- ── ROW 5 · Output (y=760) ──────────────────────────────── -->
+        <mxCell id="p3r5-label" value="Output" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="762" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r5-out" value="Multilingual Corpus → English" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="760" width="350" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3r5-note" value="ar_AR · ur_PK · tr_TR · id_ID · fa_IR · hi_IN" style="text;html=1;align=left;fontStyle=2;fontSize=10;fontColor=#888888;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="180" y="820" width="310" height="22" as="geometry"/>
+        </mxCell>
 
-    <!-- Narrative Comparison (yellow hexagon) -->
-    <mxCell id="ar_narr" value="Narrative Comparison" style="shape=mxgraph.flowchart.or;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="545" y="958" width="140" height="60" as="geometry" />
-    </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
 
-    <!-- Deep BERTopic → Analysis & Reporting outputs -->
-    <mxCell id="e_l3_vol" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="l3_bertopic" target="ar_heat" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <mxCell id="e_l3_vol2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="l3_bertopic" target="ar_vol" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <mxCell id="e_l3_narr" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#555555;strokeWidth=2;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="l3_bertopic" target="ar_narr" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+  <!-- ═══════════════════════════════════════════════════════════════
+       PAGE 4 — SetFit Evaluation Workflow
+  ════════════════════════════════════════════════════════════════════ -->
+  <diagram name="SetFit Evaluation Workflow">
+    <mxGraphModel background="#ffffff" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
 
-  </root>
-</mxGraphModel>
+        <!-- ── ROW 1 · Cluster Sampling (y=40) ────────────────────── -->
+        <mxCell id="p4r1-label" value="Cluster Sampling" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="42" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r1-cluster" value="BERTopic Cluster Output" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="180" y="40" width="175" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r1-sample" value="Sample Cluster" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="405" y="40" width="140" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r1-pos" value="Positive Examples" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="155" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r1-neg" value="Negative Examples" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="600" y="78" width="155" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4a1-cs" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r1-cluster" target="p4r1-sample" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4a1-sp" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r1-sample" target="p4r1-pos" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4a1-sn" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r1-sample" target="p4r1-neg" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- pos + neg → row2 trainer -->
+        <mxCell id="p4a1-2p" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r1-pos" target="p4r2-trainer" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4a1-2n" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r1-neg" target="p4r2-trainer" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ── ROW 2 · SetFit Training (y=200) ───────────────────── -->
+        <mxCell id="p4r2-label" value="SetFit Training" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="202" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r2-backbone" value="Sentence Transformer Backbone" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="180" y="200" width="200" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r2-trainer" value="SetFitTrainer&#xa;num_epochs · batch_size · seed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="200" width="200" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4a2-bt" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r2-backbone" target="p4r2-trainer" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- arrow row2 → row3 -->
+        <mxCell id="p4a2-3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r2-trainer" target="p4r3-cv" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ── ROW 3 · Cross-Validation (y=330) ───────────────────── -->
+        <mxCell id="p4r3-label" value="Cross-Validation" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="332" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r3-cv" value="10-Fold CV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="180" y="330" width="140" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r3-metrics" value="Accuracy · Precision · Recall · F1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="370" y="330" width="215" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r3-note" value="mean F1 0.85 · mean Acc 0.86" style="text;html=1;align=left;fontStyle=2;fontSize=10;fontColor=#888888;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="390" width="215" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4a3-cm" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r3-cv" target="p4r3-metrics" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- arrow row3 → row4 -->
+        <mxCell id="p4a3-4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r3-metrics" target="p4r4-report" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ── ROW 4 · Evaluation (y=475) ────────────────────────── -->
+        <mxCell id="p4r4-label" value="Evaluation" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="477" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r4-report" value="Classification Report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="180" y="475" width="165" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r4-conf" value="Confusion Matrix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="365" y="475" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r4-dict" value="Metrics Dict" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="535" y="475" width="140" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- arrow row4 → row5 -->
+        <mxCell id="p4a4-5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r4-conf" target="p4r5-annotate" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ── ROW 5 · Apply to Corpus (y=605) ───────────────────── -->
+        <mxCell id="p4r5-label" value="Apply to Corpus" style="text;html=1;align=right;fontStyle=3;fontColor=#555555;fontSize=13;whiteSpace=wrap;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="10" y="607" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r5-annotate" value="Annotate Full Cluster" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="605" width="165" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r5-refined" value="Refined Cluster Labels" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="395" y="605" width="165" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4r5-next" value="Refined embeddings →&#xa;next BERTopic layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="605" width="200" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4a5-ar" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r5-annotate" target="p4r5-refined" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4a5-rn" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#555555;strokeWidth=2;" edge="1" source="p4r5-refined" target="p4r5-next" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+</mxfile>
