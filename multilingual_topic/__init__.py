@@ -2,30 +2,39 @@
 multilingual-topic-toolkit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 A toolkit for multilingual topic modelling, machine translation,
-SetFit-guided classification, and text preprocessing.
+SetFit-guided cluster refinement, and text preprocessing.
 
-Originally developed for large-scale social media analysis across
-Arabic, English, Urdu, Farsi, Turkish and Indonesian corpora.
+Originally developed for large-scale social media and news analysis across
+Arabic, English, Urdu, Farsi, Turkish, Hindi and Indonesian corpora.
 """
 
-from .topic_modeling import SentenceRepresentation, BERTopicModel
+from .topic_modeling import SentenceRepresentation, TopicModel, ParameterTuner
 from .translation import ManyToManyTranslator, HelsinkiTranslator, translate_iterator
-from .classification import ClassifierValidationHelper, ClassifierTestingHelper, DataVisualizer
+from .classification import (
+    ClassifierValidationHelper,
+    ClassifierAnnotationHelper,
+    ClassifierTestingHelper,
+    DataVisualizer,
+)
 from .preprocessing import TextPreprocessor
 from .checks import TruncationChecks, SentenceSplitterGenerator, TextChunker
+from .utils import FileHandler
 
 __version__ = "0.1.0"
 __all__ = [
     "SentenceRepresentation",
-    "BERTopicModel",
+    "TopicModel",
+    "ParameterTuner",
     "ManyToManyTranslator",
     "HelsinkiTranslator",
     "translate_iterator",
     "ClassifierValidationHelper",
+    "ClassifierAnnotationHelper",
     "ClassifierTestingHelper",
     "DataVisualizer",
     "TextPreprocessor",
     "TruncationChecks",
     "SentenceSplitterGenerator",
     "TextChunker",
+    "FileHandler",
 ]

@@ -153,7 +153,7 @@ class ClassifierValidationHelper(ClassifierBaseHelper):
         # return some_results_or_model
         return df[[self.topic_col, self.text_col, self.label_col, self.prediction_col]]
 
-class ClassifierValidationHelper(ClassifierBaseHelper):
+class ClassifierAnnotationHelper(ClassifierBaseHelper):
     def __init__(self, data: pd.DataFrame, theme_col: str, theme: str, src_text: str, text_col: str,
                  label_col: str, prediction_col: str, topic_col: str, sample_size: int = 10):
         super().__init__(data, src_text, text_col, label_col, prediction_col, topic_col)
