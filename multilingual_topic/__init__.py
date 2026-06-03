@@ -20,6 +20,7 @@ from .classification import (
 from .preprocessing import TextPreprocessor
 from .checks import TruncationChecks, SentenceSplitterGenerator, TextChunker
 from .utils import FileHandler
+from .analysis import volume_over_time, top_n_distribution, platform_language_breakdown, Heatmap, top_accounts_by_country
 
 __version__ = "0.1.0"
 __all__ = [
