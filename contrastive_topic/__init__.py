@@ -1,5 +1,5 @@
 """
-multilingual-topic-toolkit
+contrastive-topic-modeling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 A toolkit for multilingual topic modelling, machine translation,
 SetFit-guided cluster refinement, and text preprocessing.

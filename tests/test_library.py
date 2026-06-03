@@ -1,5 +1,5 @@
 """
-Tests for multilingual-topic-toolkit.
+Tests for contrastive-topic-modeling.
 Covers all modules that don't require model downloads.
 Model-dependent tests are marked with @pytest.mark.slow and skipped by default.
 """
@@ -14,7 +14,7 @@ from datasets import Dataset
 
 class TestTextPreprocessor:
     def setup_method(self):
-        from multilingual_topic import TextPreprocessor
+        from contrastive_topic import TextPreprocessor
         self.pp = TextPreprocessor()
 
     def test_removes_links(self):
@@ -49,7 +49,7 @@ class TestTextPreprocessor:
 
 class TestSentenceSplitter:
     def setup_method(self):
-        from multilingual_topic import SentenceSplitterGenerator
+        from contrastive_topic import SentenceSplitterGenerator
         self.gen = SentenceSplitterGenerator
 
     def test_english_splits_on_period(self):
@@ -87,17 +87,17 @@ def dummy_df():
 
 class TestVolumeOverTime:
     def test_returns_figure(self, dummy_df):
-        from multilingual_topic import volume_over_time
+        from contrastive_topic import volume_over_time
         fig = volume_over_time(dummy_df, date_col="date")
         assert fig is not None
 
     def test_with_group_col(self, dummy_df):
-        from multilingual_topic import volume_over_time
+        from contrastive_topic import volume_over_time
         fig = volume_over_time(dummy_df, date_col="date", group_col="country", top_n=3)
         assert fig is not None
 
     def test_handles_bad_dates(self, dummy_df):
-        from multilingual_topic import volume_over_time
+        from contrastive_topic import volume_over_time
         dummy_df = dummy_df.copy()
         dummy_df.loc[0, "date"] = "not-a-date"
         fig = volume_over_time(dummy_df, date_col="date")
@@ -106,21 +106,21 @@ class TestVolumeOverTime:
 
 class TestTopNDistribution:
     def test_returns_figure(self, dummy_df):
-        from multilingual_topic import top_n_distribution
+        from contrastive_topic import top_n_distribution
         fig = top_n_distribution(dummy_df, col="country", top_n=4)
         assert fig is not None
 
 
 class TestHeatmap:
     def test_pivot_table_shape(self, dummy_df):
-        from multilingual_topic import Heatmap
+        from contrastive_topic import Heatmap
         hm = Heatmap(dummy_df, row_col="country", col_col="theme")
         pivot = hm.get_pivot_table()
         assert pivot.shape[0] <= 4  # 4 countries
         assert pivot.shape[1] <= 4  # 4 themes
 
     def test_plot_returns_figure(self, dummy_df):
-        from multilingual_topic import Heatmap
+        from contrastive_topic import Heatmap
         hm = Heatmap(dummy_df, row_col="country", col_col="theme")
         fig = hm.plot()
         assert fig is not None
@@ -128,7 +128,7 @@ class TestHeatmap:
 
 class TestTopAccountsByCountry:
     def test_returns_dataframe(self, dummy_df):
-        from multilingual_topic import top_accounts_by_country
+        from contrastive_topic import top_accounts_by_country
         result = top_accounts_by_country(dummy_df, account_col="account", country_col="country", top_n=5)
         assert isinstance(result, pd.DataFrame)
         assert result.shape[0] <= 5
@@ -136,7 +136,7 @@ class TestTopAccountsByCountry:
 
 class TestPlatformLanguageBreakdown:
     def test_returns_dataframe(self, dummy_df):
-        from multilingual_topic.analysis import platform_language_breakdown
+        from contrastive_topic.analysis import platform_language_breakdown
         dummy_df["language"] = np.random.choice(["Arabic", "English", "Turkish"], len(dummy_df))
         result = platform_language_breakdown(dummy_df, platform_col="platform", language_col="language")
         assert isinstance(result, pd.DataFrame)
@@ -146,7 +146,7 @@ class TestPlatformLanguageBreakdown:
 
 class TestEvaluation:
     def setup_method(self):
-        from multilingual_topic import Evaluation
+        from contrastive_topic import Evaluation
         self.y_true = ["relevant", "irrelevant", "relevant", "relevant", "irrelevant"]
         self.y_pred = ["relevant", "irrelevant", "irrelevant", "relevant", "irrelevant"]
         self.ev = Evaluation(self.y_true, self.y_pred)
@@ -176,7 +176,7 @@ class TestEvaluation:
 
 class TestTranslationUtils:
     def test_iter_batches(self):
-        from multilingual_topic.translation import iter_batches
+        from contrastive_topic.translation import iter_batches
         data = list(range(10))
         batches = list(iter_batches(iter(data), batch_size=3))
         assert len(batches) == 4
@@ -184,7 +184,7 @@ class TestTranslationUtils:
         assert batches[-1] == [9]
 
     def test_iter_df_as_dict(self):
-        from multilingual_topic.translation import iter_df_as_dict
+        from contrastive_topic.translation import iter_df_as_dict
         df = pd.DataFrame({"a": [1, 2], "b": [3, 4]})
         rows = list(iter_df_as_dict(df))
         assert rows[0] == {"a": 1, "b": 3}
@@ -195,13 +195,13 @@ class TestTranslationUtils:
 
 class TestFileHandler:
     def test_create_filename(self, tmp_path):
-        from multilingual_topic import FileHandler
+        from contrastive_topic import FileHandler
         fh = FileHandler(str(tmp_path))
         result = fh.create_filename("test.csv")
         assert "test.csv" in result
 
     def test_csv_roundtrip(self, tmp_path):
-        from multilingual_topic import FileHandler
+        from contrastive_topic import FileHandler
         fh = FileHandler(str(tmp_path))
         df = pd.DataFrame({"x": [1, 2, 3], "y": ["a", "b", "c"]})
         fh.df_to_csv(df, "test.csv")
@@ -209,7 +209,7 @@ class TestFileHandler:
         assert list(loaded["x"]) == [1, 2, 3]
 
     def test_json_roundtrip(self, tmp_path):
-        from multilingual_topic import FileHandler
+        from contrastive_topic import FileHandler
         fh = FileHandler(str(tmp_path))
         data = {"key": "value", "num": 42}
         fh.save_json(data, "test.json")

@@ -1,4 +1,4 @@
-# multilingual-topic-toolkit
+# contrastive-topic-modeling
 
 A Python toolkit for multilingual topic modelling, SetFit-guided cluster refinement, machine translation, and text preprocessing. Built for large-scale social media and news analysis across multiple language communities.
 
@@ -110,7 +110,7 @@ See [`notebooks/analysis_demo.ipynb`](notebooks/analysis_demo.ipynb) for aggrega
 ### Embed + tune + topic model
 
 ```python
-from multilingual_topic import SentenceRepresentation, ParameterTuner, TopicModel
+from contrastive_topic import SentenceRepresentation, ParameterTuner, TopicModel
 
 embedder = SentenceRepresentation(model_name="all-mpnet-base-v2", data=df, text_col="text")
 embedder.extract_embeddings(batch_size=64)
@@ -129,7 +129,7 @@ topics, probs = model.fit(embedder.embeddings)
 ### SetFit cluster refinement
 
 ```python
-from multilingual_topic import ClassifierValidationHelper, train_setfit, Evaluation
+from contrastive_topic import ClassifierValidationHelper, train_setfit, Evaluation
 
 helper = ClassifierValidationHelper(
     data=cluster_df, theme_col="label", theme="relevant",
@@ -149,7 +149,7 @@ ev.confusion_matrix().show()
 ### Cross-validation
 
 ```python
-from multilingual_topic import cross_validate_setfit
+from contrastive_topic import cross_validate_setfit
 
 results = cross_validate_setfit(
     df, text_col="text", label_col="label",
@@ -162,8 +162,8 @@ results = cross_validate_setfit(
 
 ```python
 from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
-from multilingual_topic import ManyToManyTranslator, translate_iterator
-from multilingual_topic.translation import iter_df_as_dict
+from contrastive_topic import ManyToManyTranslator, translate_iterator
+from contrastive_topic.translation import iter_df_as_dict
 
 model = MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
 tokenizer = MBart50TokenizerFast.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
@@ -179,7 +179,7 @@ translated = list(translate_iterator(
 ### Preprocessing
 
 ```python
-from multilingual_topic import TextPreprocessor
+from contrastive_topic import TextPreprocessor
 
 pp = TextPreprocessor(apply_arabic_preprocessor=False)
 df["text_clean"] = df["text"].apply(pp.preprocess)
@@ -188,7 +188,7 @@ df["text_clean"] = df["text"].apply(pp.preprocess)
 ### Analysis
 
 ```python
-from multilingual_topic import volume_over_time, Heatmap, top_n_distribution
+from contrastive_topic import volume_over_time, Heatmap, top_n_distribution
 
 volume_over_time(df, date_col="date", group_col="country", top_n=5).show()
 Heatmap(df, row_col="country", col_col="theme").plot().show()
