@@ -1,4 +1,4 @@
-# contrastive-topic-modeling
+# multilingual-topic-modeling
 
 A Python toolkit for multilingual topic modelling, SetFit-guided cluster refinement, machine translation, and text preprocessing. Built for large-scale social media and news analysis across multiple language communities.
 
@@ -29,6 +29,9 @@ A Python toolkit for multilingual topic modelling, SetFit-guided cluster refinem
 | | `platform_language_breakdown()` | Platform × language cross-tabulation |
 | | `Heatmap` | Pivot-table heatmap for two categorical dimensions (e.g. country × theme) |
 | | `top_accounts_by_country()` | Top-N account activity cross-tabulated against countries |
+| `outlier_mitigation` | `StaticReducer` | Reduce outlier documents to the nearest cluster via UMAP + cosine similarity |
+| | `StaticClusterer` | Re-cluster outliers separately with relaxed HDBSCAN parameters |
+| | `SoftReclusterer` | Probabilistic outlier reassignment using BERTopic soft-clustering |
 | `utils` | `FileHandler` | File I/O utilities: CSV, JSON, JSONL, TMX, parallel corpora |
 
 ## Installation
@@ -206,3 +209,12 @@ top_n_distribution(df, col="platform").show()
 | Indonesian | ✓ | ✓ | ✓ |
 | Hindi | ✓ | ✓ | ✓ |
 | Persian/Farsi | ✓ | — | ✓ |
+
+## Related repos
+
+| Repo | What it covers |
+|---|---|
+| [`multilingual-mt`](https://github.com/ay94/multilingual-mt) | Translation model evaluation and benchmarking — error analysis, BERTScore / METEOR / XLMScore comparisons across mBART and Helsinki-NLP models for Arabic and Turkish |
+| [`multilingual-ner`](https://github.com/ay94/multilingual-ner) | Named entity recognition across languages — benchmarking, extraction pipelines, validation tooling, and CoNLL licensing notes |
+| [`semantic-knn`](https://github.com/ay94/semantic-knn) | KNN-based corpus labelling using ChromaDB — assigns topic labels to unlabelled documents via similarity to annotated exemplars; used for outlier classification and large-scale corpus extrapolation |
+| [`topic-modeling-recipes`](https://github.com/ay94/topic-modeling-recipes) | Methodology documentation and notebooks — sampling strategies, translation workflows, outlier mitigation approaches, guided and layered modelling patterns |
