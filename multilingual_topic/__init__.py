@@ -19,7 +19,14 @@ from .analysis import (
     Heatmap,
     top_accounts_by_country,
 )
-from .translation import ManyToManyTranslator, HelsinkiTranslator, translate_iterator
+from .translation import (
+    Translator,
+    ManyToManyTranslator,
+    HelsinkiTranslator,
+    translate_iterator,
+    get_processed_message_ids,
+    MBART_LANG_CODES,
+)
 
 # Heavy modules — require bertopic, umap-learn, hdbscan
 try:
