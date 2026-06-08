@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.backends.legacy:build"
 
 [project]
-name = "contrastive-topic-modeling"
+name = "multilingual-topic-modeling"
 version = "0.1.0"
-description = "Contrastive topic modeling with layered BERTopic, SetFit-guided cluster refinement, multilingual machine translation and text preprocessing."
+description = "Multilingual topic modelling with BERTopic, outlier mitigation, SetFit-guided cluster refinement, machine translation and text preprocessing."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }

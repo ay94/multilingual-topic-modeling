@@ -1,8 +1,8 @@
 """
-contrastive-topic-modeling
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-A toolkit for multilingual topic modelling, machine translation,
-SetFit-guided cluster refinement, and text preprocessing.
+multilingual-topic-modeling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Multilingual topic modelling with BERTopic, outlier mitigation,
+SetFit-guided cluster refinement, machine translation, and text preprocessing.
 """
 
 __version__ = "0.1.0"
@@ -24,6 +24,7 @@ from .translation import ManyToManyTranslator, HelsinkiTranslator, translate_ite
 # Heavy modules — require bertopic, umap-learn, hdbscan
 try:
     from .topic_modeling import SentenceRepresentation, TopicModel, ParameterTuner
+    from .outlier_mitigation import StaticReducer, StaticClusterer, SoftReclusterer
 except ImportError:
     pass
 
